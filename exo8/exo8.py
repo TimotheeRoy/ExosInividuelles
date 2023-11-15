@@ -37,19 +37,22 @@ def hint(tab,code):
 
 
 
-def askColor():
-    return input('Entrez une couleur : ')
+def askColor(n):
+    if n == 1:
+        return input(f'Entrez la {n}ère couleur : ')
+    else:
+        return input(f'Entrez la {n}ème couleur : ')
 
 def gameLoop():  
     print('Attention, il peut y avoir plusieurs fois la même couleur')          
     code = defineCode()
     while True:
 
-        propal = [askColor() for _ in range(4)]
+        propal = [askColor(i+1) for i in range(4)]
         print('Proposition : ', propal)
         while not isColors(propal):
             print('Les couleurs possibles sont : ',colors)
-            propal = [askColor() for _ in range(4)]
+            propal = [askColor(i+1) for i in range(4)]
         
         if checkPropal(propal,code):
             return print('Tu as trouvé')
