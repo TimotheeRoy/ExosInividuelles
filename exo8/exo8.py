@@ -5,13 +5,12 @@ from collections import Counter
 
 
 colors = ['red', 'green', 'blue', 'yellow','purple','grey','black','white']
+
 def defineCode():
     code = []
     for i in range(4):
         code.append(colors[randint(0,7)])
     return code
-
-
 
 def isColors (tab) :
     for color in tab :
@@ -32,25 +31,18 @@ def hint(tab,code):
     for i in range(len(tab)):
         if tab[i] == code[i]:
             colorAndPos+=1
-        
-    counterCode, counterTab = Counter(code), Counter(tab)
-    for colorToFind in counterCode:
-        for colorToCheck in counterTab:
-            if colorToFind == colorToCheck:
-                color += min(counterCode[colorToFind], counterTab[colorToCheck])
-        #elif tab[i] in code:
-        #    color+=1                  
-    return ['Bonnes couleurs à la bonne place : ' + str(colorAndPos),
-            'Bonnes couleurs à la mauvaise place : '+ str(color-colorAndPos)]
+        elif tab[i] in code:
+            color+=1                  
+    return 'Bonnes couleurs à la bonne place : ' + str(colorAndPos) + '\nBonnes couleurs à la mauvaise place : '+ str(color)
 
 
 
 def askColor():
     return input('Entrez une couleur : ')
 
-def gameLoop():            
-    #code = defineCode()
-    code = ['black', 'black', 'purple', 'white']
+def gameLoop():  
+    print('Attention, il peut y avoir plusieurs fois la même couleur')          
+    code = defineCode()
     while True:
 
         propal = [askColor() for _ in range(4)]
