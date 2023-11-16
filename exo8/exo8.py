@@ -1,14 +1,13 @@
 ## on rentre un tableau de 4 couleurs. En sortie on a un tableau de 2 chiffres
 ## le premier chiffre représente le nb de bonne couleur bien placée, le 2e le nb de bonne couleur mal placée 
 from random import *
-from collections import Counter
 
 
 colors = ['red', 'green', 'blue', 'yellow','purple','grey','black','white']
 
 def defineCode():
     code = []
-    for i in range(4):
+    for _ in range(4):
         code.append(colors[randint(0,7)])
     return code
 
@@ -26,8 +25,6 @@ def checkPropal (tab,code):
 
 def hint(tab,code):
     colorAndPos , color = 0, 0 
-    setCode, setTab = set(code), set(tab)  
-
     for i in range(len(tab)):
         if tab[i] == code[i]:
             colorAndPos+=1
@@ -44,7 +41,8 @@ def askColor(n):
         return input(f'Entrez la {n}ème couleur : ')
 
 def gameLoop():  
-    print('Attention, il peut y avoir plusieurs fois la même couleur')          
+    print("Attention, il peut y avoir plusieurs fois la même couleur. En cas de doublon d'une couleur dans le code, si cette couleur est bien placée une fois, \nle jeu la comptabilisera à la fois comme bien et mal placée")
+    print("Exemple d'interprétation de l'indice dans ce cas: \nCode = [black,black,purple,white] et proposition = [black,purple, purple, white] \nRenvoie 3 Bien placées et 1 mal placée \n ")        
     code = defineCode()
     while True:
 

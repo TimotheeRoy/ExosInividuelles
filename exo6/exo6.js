@@ -1,4 +1,4 @@
-const bissextille = (year) =>{ // year est un nombre
+const isBissextille = (year) =>{ // year est un nombre
     if (year%400 === 0 | (year%4 === 0 && year%100 !== 0))
         return 1;
     else
@@ -6,7 +6,7 @@ const bissextille = (year) =>{ // year est un nombre
 }       // retourne le nb de jour à ajouter à l'année
 
 
-const maxDayMonth = (month) => { // month est un nombre entre 1 et 12
+const getMaxDayMonth = (month, year) => { // month est un nombre entre 1 et 12
     const list31 = [1,3,5,7,8,10,12];
     const list30 = [4,6,9,11];
     if (list30.includes(month))
@@ -14,7 +14,7 @@ const maxDayMonth = (month) => { // month est un nombre entre 1 et 12
     else if (list31.includes(month))
         return 31;
     else
-        return 28;              // on part du principe que l'année n'est pas bissextille
+        return 28 + isBissextille(year);              // on part du principe que l'année n'est pas bissextille
 }
 
 
@@ -27,7 +27,7 @@ const isValidDate = (date) =>{ //date est une string
         return false  
     if (!(month>0 && month<13))
         return false;
-    const maxDay = maxDayMonth(month) + bissextille(year);
+    const maxDay = getMaxDayMonth(month,year);
     if (!(day>0 && day<=maxDay))
         return false
     return true;
@@ -49,7 +49,7 @@ const isDatePlaindrome = (date) =>{        //date est une string de type '08/12/
 }
 
 
-const getNextPalindrome = (n) =>{   //n est un nombre
+const getNextPalindrome = (n) =>{   //n est le nb de dates palindromes que l'on veut
     let i=0;
     let today = new Date(), day, month, year, dateString;
     while (i<n){
@@ -74,4 +74,4 @@ const getNextPalindrome = (n) =>{   //n est un nombre
     }
 }
 
-
+getNextPalindrome(10)
