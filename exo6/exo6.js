@@ -1,10 +1,11 @@
 const isBissextille = (year) =>{ // year est un nombre
-    if (year%400 === 0 | (year%4 === 0 && year%100 !== 0))
+    if (year%400 === 0 || (year%4 === 0 && year%100 !== 0))
         return 1;
     else
         return 0;
 }       // retourne le nb de jour à ajouter à l'année
 
+console.log(isBissextille(1900))
 
 const getMaxDayMonth = (month, year) => { // month est un nombre entre 1 et 12
     const list31 = [1,3,5,7,8,10,12];
@@ -18,11 +19,10 @@ const getMaxDayMonth = (month, year) => { // month est un nombre entre 1 et 12
 }
 
 
+
 const isValidDate = (date) =>{ //date est une string
     const listDate = date.split('/')
-    const day = parseInt(listDate[0]);
-    const month = parseInt(listDate[1]);
-    const year = parseInt(listDate[2]);
+    const [day, month, year] = listDate
     if (!(year>999 && year<9999))
         return false  
     if (!(month>0 && month<13))
@@ -74,4 +74,4 @@ const getNextPalindrome = (n) =>{   //n est le nb de dates palindromes que l'on 
     }
 }
 
-getNextPalindrome(10)
+//getNextPalindrome(10)

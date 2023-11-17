@@ -16,14 +16,13 @@ def isColors (tab) :
         if color not in colors:
             return False
     return True
-
-## isColors return true si chaque couleurs du tab est dans la liste colors, false sinon
+## true si chaque couleurs du tab est dans la liste colors, false sinon
 
 def checkPropal (tab,code):
     return tab == code
-## condition de victoire, true si propal = code, false sinon
+## condition de victoire
 
-def hint(tab,code):
+def getHint(tab,code):
     colorAndPos , color = 0, 0 
     for i in range(len(tab)):
         if tab[i] == code[i]:
@@ -53,10 +52,10 @@ def gameLoop():
             propal = [askColor(i+1) for i in range(4)]
         
         if checkPropal(propal,code):
-            return print('Tu as trouvé')
+            print('Tu as trouvé !')
             break
 
-        print(hint(propal,code))
+        print(getHint(propal,code))
     
     
 gameLoop()
