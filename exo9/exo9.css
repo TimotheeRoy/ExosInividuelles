@@ -1,0 +1,35 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+#btn{
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 30px;
+    border: none;
+    background-color: white;
+    margin-left: 110px;
+}
+
+#btn:hover{
+    cursor: pointer;
+    background-color: #095228;
+    color: red;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.display {
+    margin-left: 10px;
+}
+
+input{
+    border-radius: 9px;
+    height: 15px;
+    margin-left: 70px;
+}
+
+#tree {
+    margin-left: 120px;
+    color: #095228;
+}
