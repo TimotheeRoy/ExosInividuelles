@@ -51,7 +51,6 @@ const sapin = (n) => {
     return tree;
 }
 
-
 const btn = document.querySelector('#btn')
 const inputNumber = document.querySelector('input')
 const tree = document.querySelector('#tree')
@@ -66,7 +65,7 @@ inputNumber.addEventListener('keypress', (e) => {
 })
 
 
-btn.addEventListener('click', (e) => {
+btn.addEventListener('click', () => {
     tree.innerHTML = '';
     const XmasTree = sapin(parseInt(inputNumber.value)-1).replace(/\n/g, '<br>')
     tree.innerHTML += `<pre>${XmasTree} </pre>`

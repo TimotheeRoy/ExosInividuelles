@@ -1,7 +1,6 @@
 ## on rentre un tableau de 4 couleurs. En sortie on a un tableau de 2 chiffres
 ## le premier chiffre représente le nb de bonne couleur bien placée, le 2e le nb de bonne couleur mal placée 
-from random import *
-
+from random import randint
 
 colors = ['red', 'green', 'blue', 'yellow','purple','grey','black','white']
 
