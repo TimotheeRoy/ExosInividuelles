@@ -1,38 +1,86 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  </head>
-  <body>
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="..." class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Calculatrice Bootstrap</title>
+  <style>
+    .calculator {
+      max-width: 400px;
+      margin: auto;
+      margin-top: 50px;
+    }
+    .row > div {
+      height: 30px;
+      width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+  </style>
+</head>
+<body>
+
+<div class="container calculator">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Calculatrice</h2>
+      <input type="text" class="form-control mb-2" id="display" readonly>
+
+      <div class="row">
+        <div class="col"><button class="btn btn-secondary btn-block" onclick="appendToDisplay('1')">1</button></div>
+        <div class="col"><button class="btn btn-secondary btn-block" onclick="appendToDisplay('2')">2</button></div>
+        <div class="col"><button class="btn btn-secondary btn-block" onclick="appendToDisplay('3')">3</button></div>
+        <div class="col"><button class="btn btn-warning btn-block" onclick="appendToDisplay('+')">+</button></div>
       </div>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+
+      <div class="row">
+        <div class="col"><button class="btn btn-secondary btn-block" onclick="appendToDisplay('4')">4</button></div>
+        <div class="col"><button class="btn btn-secondary btn-block" onclick="appendToDisplay('5')">5</button></div>
+        <div class="col"><button class="btn btn-secondary btn-block" onclick="appendToDisplay('6')">6</button></div>
+        <div class="col"><button class="btn btn-warning btn-block" onclick="appendToDisplay('-')">-</button></div>
+      </div>
+
+      <div class="row">
+        <div class="col"><button class="btn btn-secondary btn-block" onclick="appendToDisplay('7')">7</button></div>
+        <div class="col"><button class="btn btn-secondary btn-block" onclick="appendToDisplay('8')">8</button></div>
+        <div class="col"><button class="btn btn-secondary btn-block" onclick="appendToDisplay('9')">9</button></div>
+        <div class="col"><button class="btn btn-warning btn-block" onclick="appendToDisplay('*')">*</button></div>
+      </div>
+
+      <div class="row">
+        <div class="col"><button class="btn btn-secondary btn-block" onclick="appendToDisplay('0')">0</button></div>
+        <div class="col"><button class="btn btn-secondary btn-block" onclick="clearDisplay()">C</button></div>
+        <div class="col"><button class="btn btn-success btn-block" onclick="calculate()">=</button></div>
+        <div class="col"><button class="btn btn-warning btn-block" onclick="appendToDisplay('/')">/</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+  }
+
+  function clearDisplay() {
+    document.getElementById('display').value = '';
+  }
+
+  function calculate() {
+    try {
+      document.getElementById('display').value = eval(document.getElementById('display').value);
+    } catch (error) {
+      document.getElementById('display').value = 'Erreur';
+    }
+  }
+</script>
+
+</body>
 </html>
