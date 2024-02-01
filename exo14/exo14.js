@@ -36,8 +36,4 @@ const quickSort = (tab) =>{
     return [...quickSort(left), pivot, ...quickSort(right)]
 }
 
-
-console.time(bubbleSort(D))
-console.timeEnd(bubbleSort(D))
-
 // complexité dans le pire cas en O(nlog(n))

@@ -1,0 +1,56 @@
+CREATE TABLE apprenants (
+  id INT AUTO_INCREMENT KEY,
+  idPromo INT,
+  Name VARCHAR(100),
+  Description VARCHAR(255), 
+  Role VARCHAR(100)
+);
+
+CREATE TABLE encadrants (
+  id INT AUTO_INCREMENT KEY,
+  Name VARCHAR(100),
+  Description VARCHAR(255),
+  Role VARCHAR(100)
+);
+
+CREATE TABLE promo (
+  idPromo INT KEY,
+  name VARCHAR(100),
+  annee INT
+);
+
+
+INSERT INTO apprenants(idPromo, Name, Description, Role) VALUES 
+(1,'Walid', 'First of his name, Father of flop' , 'apprenant'),
+(2,'Timothée', 'Bouffon du ROY' , 'apprenant'),
+(1,'Hélène', 'Reek' , 'apprenant'), 
+(1,'Léa', 'De Flop', 'apprenant'),
+(2,'Elias', 'Cochon 4 ever' , 'apprenant');
+
+INSERT INTO encadrants(Name, Description, Role) VALUES 
+('Laïla', 'La best', 'encadrant'),
+('Kris' ,'Edusign' , 'encadrant'),
+('Jérémie' , 'CodePassport' , 'encadrant'),
+('Romain', 'Café', 'encadrant');
+
+INSERT INTO promo (idPromo , name , annee) VALUES
+(0, 'Doria' , 2023),
+(1 , 'Eli' , 2023),
+(2 , 'Emma', 2024);
+
+
+
+CREATE TABLE toutLeMonde AS
+SELECT idPromo, Name, Description, Role FROM apprenants
+UNION
+SELECT NULL AS idPomo, Name, Description, Role FROM encadrants;
+
+ALTER TABLE toutLeMonde
+ADD COLUMN id INT AUTO_INCREMENT KEY;
+
+
+SELECT toutLeMonde.idPromo, toutLeMonde.Name, toutLeMonde.Description, toutLeMonde.Role, toutLeMonde.id FROM toutLeMonde 
+INNER JOIN promo ON toutLeMonde.idPromo = promo.idPromo WHERE toutLeMonde.idPromo = 1;
+
+SELECT * FROM promo WHERE annee = 2023;
+
