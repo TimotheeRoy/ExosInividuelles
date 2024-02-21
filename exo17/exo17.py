@@ -14,9 +14,16 @@ def generateGrid(m,n,k=0): # m lignes & n colonnes
 def clickOnCase (hiddenGrid, grid, i, j):
     if (grid[i][j] == 0):
         hiddenGrid[i][j] = 0
+        displayAfterClick(hiddenGrid, grid, i ,j)
     else : 
         return 'Perdu'
     return hiddenGrid
+
+def displayAfterClick(hiddenGrid, grid , i, j):
+    for line in range(i-1,i+2):
+        for col in range(j-1,j+2):
+            if grid[line][col] == 0:
+                hiddenGrid[line][col] = 0
 
 def isWin (grid , hiddenGrid):
     for i in range(len(grid)):
@@ -46,9 +53,11 @@ def gameLoop(grid, hiddenGrid):
         print("C'est gagné !")
     
 
-def start(i,j,k) :
-    grid = generateGrid(i,j,k)
-    hiddenGrid = [['#' for _ in range(j)] for _ in range(i)]
+
+
+def start(m,n,k) :
+    grid = generateGrid(m,n,k)
+    hiddenGrid = [['#' for _ in range(n)] for _ in range(m)]
     gameLoop(grid, hiddenGrid)
 
-start(2,2,1)
+start(10,10,25)
